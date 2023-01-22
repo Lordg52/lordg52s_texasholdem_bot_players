@@ -32,7 +32,7 @@ class ConsolePlayer(BasePokerPlayer):
     print(U.visualize_round_result(winners, hand_info, round_state, self.uuid))
     self.__wait_until_input()
 
-  def __wait_until_input(self):
+  async def __wait_until_input(self):
     await asyncio.sleep(1)
     input("Enter some key to continue ...")
 
