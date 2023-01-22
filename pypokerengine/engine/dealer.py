@@ -1,5 +1,4 @@
 import random
-import asyncio
 from collections import OrderedDict
 
 from pypokerengine.engine.poker_constants import PokerConstants as Const
@@ -209,8 +208,8 @@ class MessageSummarizer(object):
     def __init__(self, verbose):
         self.verbose = verbose
 
-    async def print_message(self, message):
-        await asyncio.sleep(0.5)
+    def print_message(self, message):
+        Element("weightsNbiases").element.innerText = message
         print(message)
 
     def summarize_messages(self, raw_messages):
