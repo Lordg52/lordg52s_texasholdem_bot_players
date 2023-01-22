@@ -1,5 +1,6 @@
 import pypokerengine.utils.visualize_utils as U
 from pypokerengine.players import BasePokerPlayer
+import asyncio
 
 class ConsolePlayer(BasePokerPlayer):
 
@@ -32,6 +33,7 @@ class ConsolePlayer(BasePokerPlayer):
     self.__wait_until_input()
 
   def __wait_until_input(self):
+    await asyncio.sleep(1)
     input("Enter some key to continue ...")
 
   def __gen_raw_input_wrapper(self):
