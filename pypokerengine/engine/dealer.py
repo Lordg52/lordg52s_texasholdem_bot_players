@@ -210,7 +210,7 @@ class MessageSummarizer(object):
         self.verbose = verbose
 
     async def print_message(self, message):
-		await asyncio.sleep(0.5)
+        await asyncio.sleep(0.5)
         print(message)
 
     def summarize_messages(self, raw_messages):
