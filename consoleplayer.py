@@ -6,7 +6,7 @@ class ConsolePlayer(BasePokerPlayer):
 
   def __init__(self, input_receiver=None):
     self.input_receiver = input_receiver if input_receiver else self.__gen_raw_input_wrapper()
-	self.letter = 'o'
+    self.letter = False
 
   def declare_action(self, valid_actions, hole_card, round_state):
     print(U.visualize_declare_action(valid_actions, hole_card, round_state, self.uuid))
@@ -48,9 +48,16 @@ class ConsolePlayer(BasePokerPlayer):
 
 
 
-  def __receive_action_from_console(self, valid_actions):
+  async def __receive_action_from_console(self, valid_actions):
     print('Enter f(fold), c(call), r(raise).\n >> ')
+    i = True
+    while i: 
+      await asyncio.sleep(0.1)
+      if self.letter: 
+        i = False
     flg = self.letter
+    self.letter = False
+
     if flg in self.__gen_valid_flg(valid_actions):
       if flg == 'f':
         return valid_actions[0]['action'], valid_actions[0]['amount']
