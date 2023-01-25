@@ -39,8 +39,17 @@ class ConsolePlayer(BasePokerPlayer):
   def __gen_raw_input_wrapper(self):
     return lambda msg: input(msg)
 
+
+#buttons for gamers
+  def game_move_button(self, letter):
+    self.letter = letter
+    return self.letter
+
+
+
   def __receive_action_from_console(self, valid_actions):
-    flg = self.input_receiver('Enter f(fold), c(call), r(raise).\n >> ')
+    print('Enter f(fold), c(call), r(raise).\n >> ')
+    flg = self.letter
     if flg in self.__gen_valid_flg(valid_actions):
       if flg == 'f':
         return valid_actions[0]['action'], valid_actions[0]['amount']
