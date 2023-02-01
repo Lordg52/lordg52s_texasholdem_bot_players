@@ -53,7 +53,7 @@ class ConsolePlayer(BasePokerPlayer):
     i = True
     while i: 
       await asyncio.sleep(0.1)
-      if self.letter: 
+      if self.letter != False: 
         i = False
     flg = self.letter
     self.letter = False
