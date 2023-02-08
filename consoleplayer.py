@@ -15,23 +15,23 @@ class ConsolePlayer(BasePokerPlayer):
 
   def receive_game_start_message(self, game_info):
     print(U.visualize_game_start(game_info, self.uuid))
-    self.__wait_until_input()
+    asyncio.run(self.__wait_until_input())
 
   def receive_round_start_message(self, round_count, hole_card, seats):
     print(U.visualize_round_start(round_count, hole_card, seats, self.uuid))
-    self.__wait_until_input()
+    asyncio.run(self.__wait_until_input())
 
   def receive_street_start_message(self, street, round_state):
     print(U.visualize_street_start(street, round_state, self.uuid))
-    self.__wait_until_input()
+    asyncio.run(self.__wait_until_input())
 
   def receive_game_update_message(self, new_action, round_state):
     print(U.visualize_game_update(new_action, round_state, self.uuid))
-    self.__wait_until_input()
+    asyncio.run(self.__wait_until_input())
 
   def receive_round_result_message(self, winners, hand_info, round_state):
     print(U.visualize_round_result(winners, hand_info, round_state, self.uuid))
-    self.__wait_until_input()
+    asyncio.run(self.__wait_until_input())
 
   async def __wait_until_input(self):
     await asyncio.sleep(1)
