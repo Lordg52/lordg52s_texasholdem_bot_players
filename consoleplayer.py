@@ -51,7 +51,7 @@ class ConsolePlayer(BasePokerPlayer):
   async def __receive_action_from_console(self, valid_actions):
     print('Enter f(fold), c(call), r(raise).\n >> ')
     i = True
-    async while i: 
+    while i: 
       await asyncio.sleep(0.1)
       if self.letter != False: 
         i = False
