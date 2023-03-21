@@ -52,7 +52,7 @@ class ConsolePlayer(BasePokerPlayer):
     print('Enter f(fold), c(call), r(raise).\n >> ')
     i = True
     while i: 
-      await asyncio.sleep(0.1)
+      asyncio.sleep(0.1)
       if self.letter != False: 
         i = False
     flg = self.letter
