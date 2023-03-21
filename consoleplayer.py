@@ -10,7 +10,7 @@ class ConsolePlayer(BasePokerPlayer):
 
   def declare_action(self, valid_actions, hole_card, round_state):
     print(U.visualize_declare_action(valid_actions, hole_card, round_state, self.uuid))
-    action, amount = self.__receive_action_from_console(valid_actions)
+    action, amount = asyncio.run(self.__receive_action_from_console(valid_actions))
     return action, amount
 
   def receive_game_start_message(self, game_info):
@@ -42,19 +42,16 @@ class ConsolePlayer(BasePokerPlayer):
 
 
 #buttons for gamers
-  def game_move_button(self, letter):
+  async def game_move_button(self, letter):
     self.letter = letter
     return self.letter
 
 
 
-  def __receive_action_from_console(self, valid_actions):
+  async def __receive_action_from_console(self, valid_actions):
     print('Enter f(fold), c(call), r(raise).\n >> ')
-    i = True
-    while i: 
-      asyncio.sleep(0.1)
-      if self.letter != False: 
-        i = False
+    while not self.letter: 
+      await asyncio.sleep(0.1) #find a way to do await self.letter 
     flg = self.letter
     self.letter = False
 
